@@ -1,0 +1,19 @@
+body {
+	background-color: #F0A400;
+	height: 1000px;
+}
+
+/* Helper Classes */
+
+.vertical-center {
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+}
+
+.jumbotron {
+	background-color: transparent;
+}
+
+
+
