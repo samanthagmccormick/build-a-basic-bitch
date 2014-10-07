@@ -1,19 +1,80 @@
+
 body {
-	background-color: #F0A400;
-	height: 1000px;
+	background-color: #69372B;
 }
 
 /* Helper Classes */
+ 
+.center {
+  float: none;
+  margin: 0 auto;
+  text-align: center;
+}
 
 .vertical-center {
-	text-align: center;
-	vertical-align: middle;
-	margin: auto;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.bottomMargin {
+	margin-bottom: 10px;
+}
+
+/* FIRST FRAME */
+
+/* Background photo */
+.background {
+	position: absolute;
+}
+
+#firstFrame {
+	position: relative;
 }
 
 .jumbotron {
-	background-color: transparent;
+	background-color: rgba(105, 55, 43, 0.46);
 }
 
+.jumbotron h1 {
+	color: #fff;
+}
+/* SECOND FRAME */
+
+	/* This adds padding for the second frame's navbar that appears */
+	.paddingtop {
+		padding-top: 75px;
+	}
+
+	/* Form label should be bigger font to match bigger input */
+	label {
+		font-size: 25px;
+		color: #fff;
+	}
+
+	/* Area to put the quote */
+	#quoteHere {
+		font-size: 35px;
+		color: #fff;
+	}
+
+	.fa-quote-left {
+		color: #fff;
+	}
+
+/* THIRD FRAME (Gallery) */
+
+
+
+/* TESTING */
+
+#artSpace {
+	position: relative;
+}
+
+#draggable {
+	position: absolute;
+}
 
 
