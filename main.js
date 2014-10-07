@@ -19,6 +19,14 @@ $(document).on('ready', function() {
 
 	var launchSecondFrame = function() {
 		$('#secondFrame').fadeIn(2000);
+
+		// On page load, get original location of all tools!
+		var lattePos = $("#latte").parent().position();
+		var yogaPantsPos = $("#yogaPants").parent().position();
+		var messyBunPos = $("#messyBun").parent().position();
+		console.log("Latte original position: ", lattePos);
+		console.log("Yoga pants original position: ", yogaPantsPos);
+		console.log("Messy bun original position: ", messyBunPos);
 	};
 
 ////////////////////////////////
@@ -71,44 +79,44 @@ $(document).on('ready', function() {
 
 			var newBitch = new BasicBitch(randomQuote, basicBitchName, yourName);
 			console.log(newBitch);
-
-
 		});
 
-
-
-
-
-
-
-
-
 }); // End document ready
+
+
 
 // Put all JQuery UI stuff down here!
 
 
+
+
+
 $( ".col-lg-4 img" ).draggable({
 	cursor: "move",
-	cursorAt: { top: 56, left: 56 },
-	drag: function() {
+	cursorAt: { top: 0, left: 0 },
+	// On stop dragging, store these variables
+	stop: function() {
 
-		console.log( "Art position: ", $("#art").position() );
-		console.log( "Tools position: ", $("#tools").position() );
-		console.log( "Art parent position: ", $("#art").parent().position() );
-		console.log( "Tools parent position: ", $("#tools").parent().position() );
-		console.log( "Papa position: ", $("#papa").position()  );
+		console.log("--------------------");
+
+		console.log( "Mannequin offset: ", $("#mannequin").offset() );
+		var mannOffset = $("#mannequin").offset() ;
+
+		console.log( "this draggable-item offset: ", $(this).offset() );
+		var thisOffset = $(this).offset();
+
+		// To get your target offset, take the draggable item's offset - the mannequin's offset,
+		console.log( "Target offset: ", thisOffset.left - mannOffset.left, thisOffset.top - mannOffset.top );
+
+		var left = thisOffset.left - mannOffset.left;
+		var top = thisOffset.top - mannOffset.top;
+
+		$("#mannequin").append($(this));
+		$(this).css({ top: top, left: left }).css("position", "absolute");
+		
 
 
-        var thisPos = $(this).position();
-		console.log( "this draggable-item position: ", $(this).position() );
 
-        var parentPos = $(this).parent().position();
-        console.log( "this draggable-item's parent position: ", $(this).parent().position() );
 
-       	var x = thisPos.left - parentPos.left;
-        var y = thisPos.top - parentPos.top;
-
-        $(this).text(x + ", " + y);
     }
 });
