@@ -19,14 +19,6 @@ $(document).on('ready', function() {
 
 	var launchSecondFrame = function() {
 		$('#secondFrame').fadeIn(2000);
-
-		// On page load, get original location of all tools!
-		var lattePos = $("#latte").parent().position();
-		var yogaPantsPos = $("#yogaPants").parent().position();
-		var messyBunPos = $("#messyBun").parent().position();
-		console.log("Latte original position: ", lattePos);
-		console.log("Yoga pants original position: ", yogaPantsPos);
-		console.log("Messy bun original position: ", messyBunPos);
 	};
 
 ////////////////////////////////
@@ -52,71 +44,106 @@ $(document).on('ready', function() {
 		var randomQuote = _.sample(quotes) ;
 		// Empty what's currently in the #quoteHere div
 		$('#quoteHere').empty();
-		$('#quoteHere').append('"' + randomQuote + '"');
+		$('#quoteHere').append(randomQuote);
 	});
 
 	/* Basic Bitch Object */
-	var BasicBitch = function(quote, name, yourName) {
+	var BasicBitch = function(quote, name, yourName, lattePos, yogaPantsPos, messyBunPos) {
 		this.quote = quote;
 		this.name = name;
 		this.yourName = yourName;
+		this.lattePos = lattePos;
+		this.yogaPantsPos = yogaPantsPos;
+		this.messyBunPos = messyBunPos;
 	};
 
 		BasicBitch.prototype.render = function() {
 			if(this.element) return this.element;
 
+			this.element = $('<img src="images/mannequin-smaller.png" class="img-responsive">');
+			$('#gallery').append(this.element);
+
+			var that = this;
+
+			console.log(this.quote, this.name, this.yourName, this.lattePos, this.yogaPantsPos, this.messyBunPos);
+			console.log(this.lattePos.top);
+
+			// put the latte image at the latteposition
+			// REPEAT FOR ALL OTHER ELEMENTS
+			var latte = $('<img src="http://placehold.it/150x150" class="img-responsive" style="position: absolute; top:' + this.lattePos.top + 'px; left:' + this.lattePos.left + 'px;" />');
+			console.log(latte);
+			$('#gallery').append(latte);
+			$('#quote').append("<p>Hi, I'm " + this.name + "! " + this.quote + "</p>");
 
 		};
 
-		$(document).on('click', '.saveShare', function() {
-			var randomQuote = $('#quoteHere').text();
-			var basicBitchName = $('#basicBitchName').val();
-			var yourName = $('#yourName').val();
 
-			console.log("random quote: " + randomQuote);
-			console.log("bbname: " + basicBitchName);
-			console.log("yourname: " + yourName);
 
-			var newBitch = new BasicBitch(randomQuote, basicBitchName, yourName);
-			console.log(newBitch);
-		});
+		// DRAGGABLE STUFF //
+
+		$( ".col-lg-4 img" ).draggable({
+			cursor: "move",
+			cursorAt: { top: 75, left: 75 },
+			// On stop dragging, store these variables
+			stop: function() {
+
+				console.log("--------------------");
+
+				console.log( "Mannequin offset: ", $("#mannequin").offset() );
+				var mannOffset = $("#mannequin").offset() ;
+
+				console.log( "this draggable-item offset: ", $(this).offset() );
+				var thisOffset = $(this).offset();
+
+				// To get your target offset, take the draggable item's offset - the mannequin's offset
+				console.log( "Target offset: ", thisOffset.left - mannOffset.left, thisOffset.top - mannOffset.top );
+
+				var left = thisOffset.left - mannOffset.left;
+				var top = thisOffset.top - mannOffset.top;
+
+				$("#mannequin").append($(this));
+				$(this).css({ top: top, left: left }).css("position", "absolute");
+
+		    }
+		}); 
+
+// EVENT HANDLERS //
+
+	// On click of the Save button, store all information into an object
+	$(document).on('click', '.save', function() {
+		var randomQuote = $('#quoteHere').text();
+		var basicBitchName = $('#basicBitchName').val();
+		var yourName = $('#yourName').val();
+
+		// console.log("random quote: " + randomQuote);
+		// console.log("bbname: " + basicBitchName);
+		// console.log("yourname: " + yourName);
+
+		// Save locations of all tools that have been dropped into the mannequin
+		var lattePos = $("#latte").position();
+		var yogaPantsPos = $("#yogaPants").position();
+		var messyBunPos = $("#messyBun").position();
+
+		var newBitch = new BasicBitch(randomQuote, basicBitchName, yourName, lattePos, yogaPantsPos, messyBunPos);
+		
+		console.log(newBitch);	
+
+		$(this).closest('#secondFrame').fadeOut(2000);
+
+		newBitch.render();
+	});
+
+
+
+
+
+
 
 }); // End document ready
 
 
 
-// Put all JQuery UI stuff down here!
 
 
 
 
-
-$( ".col-lg-4 img" ).draggable({
-	cursor: "move",
-	cursorAt: { top: 0, left: 0 },
-	// On stop dragging, store these variables
-	stop: function() {
-
-		console.log("--------------------");
-
-		console.log( "Mannequin offset: ", $("#mannequin").offset() );
-		var mannOffset = $("#mannequin").offset() ;
-
-		console.log( "this draggable-item offset: ", $(this).offset() );
-		var thisOffset = $(this).offset();
-
-		// To get your target offset, take the draggable item's offset - the mannequin's offset,
-		console.log( "Target offset: ", thisOffset.left - mannOffset.left, thisOffset.top - mannOffset.top );
-
-		var left = thisOffset.left - mannOffset.left;
-		var top = thisOffset.top - mannOffset.top;
-
-		$("#mannequin").append($(this));
-		$(this).css({ top: top, left: left }).css("position", "absolute");
-		
-
-
-
-
-    }
-});

@@ -22,6 +22,7 @@ body {
 	margin-bottom: 10px;
 }
 
+
 /* FIRST FRAME */
 
 /* Background photo */
@@ -70,9 +71,14 @@ body {
 
 /* THIRD FRAME (Gallery) */
 
+#thirdFrame {
+	max-width: 400px;
+	margin: 100px auto;
+}
 
-
-/* TESTING */
+#gallery {
+	position: absolute;
+}
 
 #artSpace {
 	position: relative;
@@ -80,6 +86,12 @@ body {
 
 #draggable {
 	position: absolute;
+}
+
+#quote {
+	position: relative;
+	font-size: 30px;
+	color: pink;
 }
 
 
