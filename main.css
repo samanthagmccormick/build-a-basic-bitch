@@ -3,6 +3,10 @@ body {
 	background-color: #69372B;
 }
 
+i {
+	text-align: center;
+}
+
 /* Helper Classes */
  
 .center {
@@ -22,31 +26,36 @@ body {
 	margin-bottom: 10px;
 }
 
+.paddingtop {
+		padding-top: 75px;
+	}
+
+.right {
+	text-align:right;
+}
 
 /* FIRST FRAME */
 
-/* Background photo */
-.background {
-	position: absolute;
-}
+	/* Background photo */
+	.background {
+		position: absolute;
+	}
 
-#firstFrame {
-	position: relative;
-}
+	#firstFrame {
+		position: relative;
+	}
 
-.jumbotron {
-	background-color: rgba(105, 55, 43, 0.46);
-}
+	.jumbotron {
+		background-color: rgba(105, 55, 43, 0.46);
+	}
 
-.jumbotron h1 {
-	color: #fff;
-}
+	.jumbotron h1 {
+		color: #fff;
+	}
+
+
 /* SECOND FRAME */
 
-	/* This adds padding for the second frame's navbar that appears */
-	.paddingtop {
-		padding-top: 75px;
-	}
 
 	/* Form label should be bigger font to match bigger input */
 	label {
@@ -54,44 +63,44 @@ body {
 		color: #fff;
 	}
 
+	.height {
+		line-height: 50px;
+	}
+
 	/* Area to put the quote */
 	#quoteHere {
-		font-size: 35px;
+		font-size: 18px;
 		color: #fff;
 	}
 
-	.fa-quote-left {
-		color: #fff;
+	.fa {
+		color: pink;
 	}
 
 	#mannequin {
 		display: inline-block;
 		position: relative;
-	}
+	} 
 
 /* THIRD FRAME (Gallery) */
 
-#thirdFrame {
-	max-width: 400px;
-	margin: 100px auto;
-}
+	#gallery {
+		position: absolute;
+	}
 
-#gallery {
-	position: absolute;
-}
+	#artSpace {
+		position: relative;
+	}
 
-#artSpace {
-	position: relative;
-}
+	#draggable {
+		position: absolute;
+	}
 
-#draggable {
-	position: absolute;
-}
-
-#quote {
-	position: relative;
-	font-size: 30px;
-	color: pink;
-}
+	#quote {
+		font-family: 'Waiting for the Sunrise';
+		position: relative;
+		font-size: 70px;
+		color: pink;
+	}
 
 

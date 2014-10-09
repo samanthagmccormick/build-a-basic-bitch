@@ -6,6 +6,8 @@ $(document).on('ready', function() {
 
 	// Hide the second frame on page load
 	$('#secondFrame').hide();  
+	$('#thirdFrame').hide();
+	$('#nav').hide();
 
 	// On click of whatever button, fade out all first frame contents, then launch second frame
 	$('.whatever').on('click', function() {
@@ -19,6 +21,7 @@ $(document).on('ready', function() {
 
 	var launchSecondFrame = function() {
 		$('#secondFrame').fadeIn(2000);
+		$('#nav').fadeIn(2000);
 	};
 
 ////////////////////////////////
@@ -36,23 +39,45 @@ $(document).on('ready', function() {
 	"Should I delete that Instagram or is it cute?",
 	"Go like my status pls, no one has yet",
 	"Wearing leggings as pants IDGAF",
-	"Hashtag totesamaze"
+	"Going to brunch with the ladies #totesamaze",
+	"Just posted the CUTEST #tbt to Instagram ;)"
 	];
 
-	/* Quote Button */
-	$('.fa-quote-left').on('click', function() {
-		// Pull a random quote out of the array
-		var randomQuote = _.sample(quotes) ;
-		// Empty what's currently in the #quoteHere div
-		$('#quoteHere').empty();
-		$('#quoteHere').append(randomQuote);
-	});
+	// Buttons .... Event Handlers //
+	
+		// On hover of all buttons...
+		$('.fa').hover(
+
+			function() {
+			    console.log("on");
+			    $(this).css("color", "#FF3366");
+			},
+
+		    function() {
+			    console.log("off");
+			    $(this).css("color", "");
+			}
+		);
+
+		$('.fa-quote-left').on('click', function() {
+			// Pull a random quote out of the array
+			var randomQuote = _.sample(quotes) ;
+			// Empty what's currently in the #quoteHere div
+			$('#quoteHere').empty();
+			$('#quoteHere').append("<div class='animated bounceInLeft'>" + randomQuote + "</div>");
+		});
+
+
+	
+
 
 	/* Basic Bitch Object */
-	var BasicBitch = function(quote, name, yourName, lattePos, kombuchaPos, teenMomPos, fishtailPos, messyBunPos, fedoraPos, bagPos, keepCalmPos, scarfPos, laurenConradPos, instagramPos, wifeyMaterialPos) {
+	var BasicBitch = function(quote, name, yourName, mannequinHeight, mannequinWidth, lattePos, kombuchaPos, teenMomPos, fishtailPos, messyBunPos, fedoraPos, bagPos, keepCalmPos, scarfPos, laurenConradPos, instagramPos, wifeyMaterialPos) {
 		this.quote = quote;
 		this.name = name;
 		this.yourName = yourName;
+		this.mannequinHeight = mannequinHeight;
+		this.mannequinWidth = mannequinWidth;
 		this.lattePos = lattePos;
 		this.kombuchaPos = kombuchaPos;
 		this.teenMomPos = teenMomPos;
@@ -67,48 +92,23 @@ $(document).on('ready', function() {
 		this.wifeyMaterialPos = wifeyMaterialPos;
 	};
 
-		BasicBitch.prototype.render = function() {
-			if(this.element) return this.element;
+			BasicBitch.prototype.render = function() {
+				if(this.element) return this.element;
 
-			this.element = $('<img src="images/mannequin-smaller.png" class="img-responsive">');
-			$('#gallery').append(this.element);
+				// Create the new element with the save mannequin height and width
+				this.element = $('<div><img src="images/mannequin-smaller.png" class="img-responsive center animated lightSpeedIn" height="' + this.mannequinHeight + '" width ="' + this.mannequinWidth + '" ></div>');
 
-			// put the latte image at the latteposition
-			// REPEAT FOR ALL OTHER ELEMENTS
-			var latte = $('<img src="images/latte.png" class="img-responsive" style="position: absolute; top:' + this.lattePos.top + 'px; left:' + this.lattePos.left + 'px;" />');
+				$('#gallery').append(this.element);
 
-			var kombucha = $('<img src="images/kombucha.png" class="img-responsive" style="position: absolute; top:' + this.kombuchaPos.top + 'px; left:' + this.kombuchaPos.left + 'px;" />');
+				$('.moved').addClass('animated lightSpeedIn');
+				$('#gallery').append( $('.moved') );
 
-			var teenMom = $('<img src="images/teenmom.png" class="img-responsive" style="position: absolute; top:' + this.teenMomPos.top + 'px; left:' + this.teenMomPos.left + 'px;" />');
+				$('#quote').append("<p class='animated rollIn'>" + this.quote + "</p><p class='right'><i class='fa fa-heart'></i>" + this.name + "</p>");
 
-			var fishtail = $('<img src="images/fishtail.png" class="img-responsive" style="position: absolute; top:' + this.fishtailPos.top + 'px; left:' + this.fishtailPos.left + 'px;" />');
-
-			var messyBun = $('<img src="images/messybun.png" class="img-responsive" style="position: absolute; top:' + this.messyBunPos.top + 'px; left:' + this.messyBunPos.left + 'px;" />');
-
-			var fedora = $('<img src="images/fedora.png" class="img-responsive" style="position: absolute; top:' + this.fedoraPos.top + 'px; left:' + this.fedoraPos.left + 'px;" />');
-
-			var bag = $('<img src="images/bag.png" class="img-responsive" style="position: absolute; top:' + this.bagPos.top + 'px; left:' + this.bagPos.left + 'px;" />');
-
-			var keepCalm = $('<img src="images/keepcalm.png" class="img-responsive" style="position: absolute; top:' + this.keepCalmPos.top + 'px; left:' + this.keepCalmPos.left + 'px;" />');
-
-			var scarf = $('<img src="images/scarf.png" class="img-responsive" style="position: absolute; top:' + this.scarfPos.top + 'px; left:' + this.scarfPos.left + 'px;" />');
-
-			var laurenConrad = $('<img src="images/laurenconrad.png" class="img-responsive" style="position: absolute; top:' + this.laurenConradPos.top + 'px; left:' + this.laurenConradPos.left + 'px;" />');
-
-			var instagram = $('<img src="images/instagram.png" class="img-responsive" style="position: absolute; top:' + this.instagramPos.top + 'px; left:' + this.instagramPos.left + 'px;" />');
-
-			var wifeyMaterial = $('<img src="images/wifeymaterial.png" class="img-responsive" style="position: absolute; top:' + this.wifeyMaterialPos.top + 'px; left:' + this.wifeyMaterialPos.left + 'px;" />');
+			};
 
 
-			$('#gallery').append(latte, kombucha, teenMom, fishtail, messyBun, fedora, bag, keepCalm, scarf, laurenConrad, instagram, wifeyMaterial);
-
-			$('#quote').append("<p>Hi, I'm " + this.name + "! " + this.quote + "</p>");
-
-		};
-
-
-
-		// DRAGGABLE STUFF //
+		// DRAGGABLE ACCESSORIES //
 
 		$( ".col-lg-4 img" ).draggable({
 			cursor: "move",
@@ -130,42 +130,58 @@ $(document).on('ready', function() {
 				var left = thisOffset.left - mannOffset.left;
 				var top = thisOffset.top - mannOffset.top;
 
+				// Save the responsive size of the moved items
+				var width = $(this).width();
+				var height = $(this).height();
+
+				// Append this exact tool to the mannequin
 				$("#mannequin").append($(this));
-				$(this).css({ top: top, left: left }).css("position", "absolute");
+
+				// Append in this exact location
+				$(this).css({ top: top, left: left, height: height, width: width }).css("position", "absolute");
+
+				// Add a class of "moved" to ONLY the items that you've moved.
+				$(this).addClass('moved');
 
 		    }
 		}); 
 
-// EVENT HANDLERS //
 
-	// On click of the Save button, store all information into an object
-	$(document).on('click', '.save', function() {
-		var randomQuote = $('#quoteHere').text();
-		var basicBitchName = $('#basicBitchName').val();
-		var yourName = $('#yourName').val();
+		// On click of the Save button, store all information into an object
+		$(document).on('click', '.save', function() {
+			var randomQuote = $('#quoteHere').text();
+			var basicBitchName = $('#basicBitchName').val();
+			var yourName = $('#yourName').val();
 
-		// Save locations of all tools that have been dropped into the mannequin
-		var lattePos = $("#latte").position();
-		var kombuchaPos = $("#kombucha").position();
-		var teenMomPos = $("#teenmom").position();
-		var fishtailPos = $("#fishtail").position();
-		var messyBunPos = $("#messybun").position();
-		var fedoraPos = $("#fedora").position();
-		var bagPos = $("#bag").position();
-		var keepCalmPos = $("#keepcalm").position();
-		var scarfPos = $("#latte").position();
-		var laurenConradPos = $("#laurenconrad").position();
-		var instagramPos = $("#instagram").position();
-		var wifeyMaterialPos = $("#wifeymaterial").position();
+			// Save locations of all tools that have a class of "moved"
+			var lattePos = $("#latte").position();
+			var kombuchaPos = $("#kombucha").position();
+			var teenMomPos = $("#teenmom").position();
+			var fishtailPos = $("#fishtail").position();
+			var messyBunPos = $("#messybun").position();
+			var fedoraPos = $("#fedora").position();
+			var bagPos = $("#bag").position();
+			var keepCalmPos = $("#keepcalm").position();
+			var scarfPos = $("#latte").position();
+			var laurenConradPos = $("#laurenconrad").position();
+			var instagramPos = $("#instagram").position();
+			var wifeyMaterialPos = $("#wifeymaterial").position();
 
-		var newBitch = new BasicBitch(randomQuote, basicBitchName, yourName, lattePos, kombuchaPos, teenMomPos, fishtailPos, messyBunPos, fedoraPos, bagPos, keepCalmPos, scarfPos, laurenConradPos, instagramPos, wifeyMaterialPos);
-		
-		console.log(newBitch);	
+			// Save mannequin size
+			var mannequinHeight = $("#mannequinActual").height();
+			var mannequinWidth = $("#mannequinActual").width();
 
-		$(this).closest('#secondFrame').fadeOut(2000);
+			var newBitch = new BasicBitch(randomQuote, basicBitchName, yourName, mannequinHeight, mannequinWidth, lattePos, kombuchaPos, teenMomPos, fishtailPos, messyBunPos, fedoraPos, bagPos, keepCalmPos, scarfPos, laurenConradPos, instagramPos, wifeyMaterialPos);
 
-		newBitch.render();
-	});
+			// Hide the second frame
+			$(this).closest('#secondFrame').hide();
+
+			// Find the third frame and fade in!
+			$(this).closest('body').find('#thirdFrame').fadeIn(2000, newBitch.render());
+
+			newBitch.render();
+
+		});
 
 
 

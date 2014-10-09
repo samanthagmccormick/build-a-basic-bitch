@@ -10,11 +10,30 @@
   <!-- jQuery UI CSS -->
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <link href='http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Karla:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
 	<!-- Background photo -->
-	<img src="http://i60.tinypic.com/1z3z4tt.png" alt="" class="img-responsive background">
+	<img src="http://i60.tinypic.com/1z3z4tt.png" class="background">
+
+	<!-- Navbar -->
+	<nav id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- NAV header -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">Build a Basic Bitch</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right"> 
+					<li><a href="http://www.samanthamccormick.com/" class="navbar-link">Samantha McCormick</a></li>
+				</ul>
+			</div>
+		</div> <!-- End container -->
+	</nav> <!-- End nav -->
+
 
 	<!-- FIRST FRAME -->
 	<div id="firstFrame">
@@ -26,20 +45,10 @@
 		</div> <!-- End vertical-center div -->
 	</div> <!-- End firstframe -->
 
+
+
 	<!-- SECOND FRAME -->
 	<div id="secondFrame">
-
-		<!-- NAV BAR -->
-		<nav class="navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container">
-				<!-- NAV header -->
-				<div class="navbar-header">
-					<a class="navbar-brand" hred="#">Build a Basic Bitch</a>
-				</div>
-				<p class="navbar-text navbar-right">Lovingly built by <a href="#" class="navbar-link">Samantha McCormick</a></p>
-			</div> <!-- End container -->
-		</nav> <!-- End nav -->
-
 
 		<!-- ROWS OF CONTENT -->
 		<div class="container">	
@@ -50,91 +59,85 @@
 			
 			<div class="row">
 				<!-- Area for building a basic bitch -->
-				<div class="col-lg-6" id="artColumn">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="artColumn">
+					<div class="row height">
+						<div class= "col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							<div><a href="index.html"><i class="fa fa-refresh fa-lg"></i></a></div>
+						</div>
+						<div class= "col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							<div><i class="fa fa-quote-left fa-lg"></i></div>
+						</div>
+						<div class= "col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							<div><i class="fa fa-music fa-lg"></i></div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" id="quoteHere">
+							<!-- QUOTE APPEARS HERE WITH ANIMATION -->
+						</div>
+					</div>
+
+
 					<div class="row center">
 						<div id="mannequin">
-							<img src="images/mannequin-smaller.png" alt="" class="img-responsive">
+							<img src="images/mannequin-smaller.png" class="img-responsive" id="mannequinActual">
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="center">
-							<i class="fa fa-quote-left fa-3x"></i>
-							<p id="quoteHere"></p>
-						</div>
-					</div>
-
-					<div class="row">
-						<form class="center col-lg-8" role="form">
-							<div class="form-group">
-								<label for="name">Basic Bitch Name</label>
-								<input type="name" class="form-control input-lg" id="basicBitchName" placeholder="e.g. 'Becky'">
-							</div>
-						
-							<div class="form-group">
-								<label for="yourName">Your Name</label>
-								<input type="name" class="form-control input-lg" id="yourName" placeholder="e.g. 'John Doe'">
-							</div>
-							<p class="center"><a type="button" class="btn btn-success btn-lg save">Save</a></p>
-						</form>
-					</div>  <!-- End last row -->				
+					</div>		
 					
 				</div>
 
 				<!-- Area for draggable accessories -->
-				<div class="col-lg-6" id="toolsColumn">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="toolsColumn">
 					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="latte" src="images/latte.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="kombucha" src="images/kombucha.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="teenmom" src="images/teenmom.png" alt="" class="img-responsive bottomMargin">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="fishtail" src="images/fishtail.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="messybun" src="images/messybun.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="fedora" src="images/fedora.png" alt="" class="img-responsive bottomMargin">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="bag" src="images/bag.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="keepcalm" src="images/keepcalm.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="scarf" src="images/scarf.png" alt="" class="img-responsive bottomMargin">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="laurenconrad" src="images/laurenconrad.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="instagram" src="images/instagram.png" alt="" class="img-responsive bottomMargin">
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 							<img id="wifeymaterial" src="images/wifeymaterial.png" alt="" class="img-responsive bottomMargin">
 						</div>
 					</div>
@@ -146,6 +149,20 @@
 		
 			</div> <!-- End main row -->
 
+			<div class="row">
+				<form class="center col-lg-6 col-md-6 col-sm-6 col-xs-10" role="form">
+					<div class="form-group">
+						<label for="name">Basic Bitch Name</label>
+						<input type="name" class="form-control input-lg" id="basicBitchName" placeholder="e.g. 'Becky'">
+					</div>
+						
+					<div class="form-group">
+						<label for="yourName">Your Name</label>
+						<input type="name" class="form-control input-lg" id="yourName" placeholder="e.g. 'John Doe'">
+					</div>
+					<p class="center"><a type="button" class="btn btn-success btn-lg save">Save</a></p>
+				</form>
+			</div>  <!-- End last row -->		
 
 
 			<!-- Empty row for padding on bottom -->
@@ -159,12 +176,23 @@
 	</div>  <!-- End secondFrame -->
 
 	<div id="thirdFrame">
-		<div id= "gallery">
-
-		</div>
-		<div id="quote">
-			
-		</div>
+			<div class="row">
+				<div class="container">
+				<div class="row paddingtop">
+					<!-- Empty row for padding -->
+				</div>
+				<div class="col-lg-6">
+					<div id="quote">
+						<!-- Quote goes here -->
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div id= "gallery">
+						<!-- Basic Bitch goes here -->
+					</div>
+				</div>
+			</div>
+			</div>
 	</div>
 
 
