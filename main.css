@@ -31,7 +31,6 @@ i {
 	}
 
 .right {
-	text-align:right;
 }
 
 /* FIRST FRAME */
@@ -70,7 +69,7 @@ i {
 	/* Area to put the quote */
 	#quoteHere {
 		font-size: 18px;
-		color: #fff;
+		color: pink;
 	}
 
 	.fa {

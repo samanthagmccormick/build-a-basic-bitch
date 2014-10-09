@@ -103,8 +103,14 @@ $(document).on('ready', function() {
 				$('.moved').addClass('animated lightSpeedIn');
 				$('#gallery').append( $('.moved') );
 
-				$('#quote').append("<p class='animated rollIn'>" + this.quote + "</p><p class='right'><i class='fa fa-heart'></i>" + this.name + "</p>");
+				$('#quote').append("<p class='animated rollIn'>" + this.quote + "</p><p class='right'><i class='fa fa-heart'></i>  " + this.name + "</p>");
 
+				var name = this.yourName;
+				var createdBy = function() {
+					$('#quote').append("<p class='animated bounceInRight'>Created by " + name.toString() + "</p>");
+				};
+
+				setTimeout(createdBy, 2000);
 			};
 
 
