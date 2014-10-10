@@ -15,6 +15,7 @@ $(document).on('ready', function() {
 		$(this).closest('#firstFrame').fadeOut(2000, launchSecondFrame());
 		// set interval before this happens
 		$(this).closest('#firstFrame').remove(); 
+
 		// Remove the entry photo background
 		$('.background').remove();
 	});
@@ -28,37 +29,53 @@ $(document).on('ready', function() {
 // SECOND FRAME FUNCTIONALITY //
 ////////////////////////////////
 
+	// Music //
+
+	var isPlaying = false;
+
+	function playPause(soundobj) {
+		var thissound= eval("document."+soundobj);
+
+		if (!isPlaying) {
+			thissound.Play();
+			$('#music').addClass('animated wobble');
+			isPlaying = true;   
+		} else {
+			thissound.Stop();
+			$('#music').removeClass('animated wobble');
+			isPlaying = false;
+		};
+	};
+
+
 	/* Quotes */
 	var quotes = [
-	"Omg those yoga pants tho",
-	"Keep calm and carry on",
+	"Omg those Lululemon pants tho",
+	"Keep calm and carry on #howifeeltoday",
 	"Vodka soda pls",
-	"I SO need to detox",
-	"I just can't.",
+	"I SO need to detox #kombuchaplease",
+	"I can't. I just can't.",
 	"Can Monday like, not?",
 	"Should I delete that Instagram or is it cute?",
-	"Go like my status pls, no one has yet",
-	"Wearing leggings as pants IDGAF",
-	"Going to brunch with the ladies #totesamaze",
+	"Go like my status pls! No one has yet",
+	"Wearing leggings as pants IDGAF ;)",
+	"Going to brunch with my besties #totesamaze",
 	"Just posted the CUTEST #tbt to Instagram ;)"
 	];
 
-	// Buttons .... Event Handlers //
+	// Fontawesome Icons .... Event Handlers //
 	
-		// On hover of all buttons...
+		// On hover of all fontawesome icons...
 		$('.fa').hover(
-
 			function() {
-			    console.log("on");
-			    $(this).css("color", "#FF3366");
+			    $(this).css("color", '#FF3366');
 			},
-
 		    function() {
-			    console.log("off");
 			    $(this).css("color", "");
 			}
 		);
 
+		// On click of the fontawesome quote icon
 		$('.fa-quote-left').on('click', function() {
 			// Pull a random quote out of the array
 			var randomQuote = _.sample(quotes) ;
@@ -67,8 +84,10 @@ $(document).on('ready', function() {
 			$('#quoteHere').append("<div class='animated bounceInLeft'>" + randomQuote + "</div>");
 		});
 
-
-	
+		// On click of the music icon, play or pause music (see function above)
+		$('.fa-music').on('click', function() {
+			playPause('sound1');
+		});
 
 
 	/* Basic Bitch Object */
@@ -94,6 +113,8 @@ $(document).on('ready', function() {
 
 			BasicBitch.prototype.render = function() {
 				if(this.element) return this.element;
+				var song = $("<embed src='music/guccigucci.m4a' autostart='true' loop='false' width='2' height='0' name='sound1'></embed>");
+				$('#thirdFrame').append(song);
 
 				// Create the new element with the save mannequin height and width
 				this.element = $('<div><img src="images/mannequin-smaller.png" class="img-responsive center animated lightSpeedIn" height="' + this.mannequinHeight + '" width ="' + this.mannequinWidth + '" ></div>');
@@ -107,7 +128,7 @@ $(document).on('ready', function() {
 
 				var name = this.yourName;
 				var createdBy = function() {
-					$('#quote').append("<p class='animated bounceInRight'>Created by " + name.toString() + "</p>");
+					$('#quote').append("<p class='animated bounceInRight '>Made by " + name.toString() + "</p>");
 				};
 
 				setTimeout(createdBy, 2000);
@@ -185,7 +206,6 @@ $(document).on('ready', function() {
 			// Find the third frame and fade in!
 			$(this).closest('body').find('#thirdFrame').fadeIn(2000, newBitch.render());
 
-			newBitch.render();
 
 		});
 
